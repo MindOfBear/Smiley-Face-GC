@@ -1,0 +1,51 @@
+// Template project.
+#include "graphics.h"
+#include <math.h>
+#include <stdlib.h>
+#include <dos.h>
+#include <windows.h>
+#include <iostream>
+ 
+using namespace std;
+
+#define pi 3.14159265359
+int gd, gm;
+int n, i, j;
+double r, x, y, xp, yp, fi;
+
+
+double round(double number){
+	double x = ceil(number) - number;
+	if (number >= 0){
+		if (x <= 0.5)   return ceil(number);
+		else            return floor(number);
+	}
+	else{
+		if (x < 0.5) return ceil(number);
+		else         return floor(number);
+	}
+}
+
+
+void main(){	
+	n = 40; // numarul de cercuri
+	r = 90; // raza unui cerc
+			// initializarea modului grafic
+	initwindow(600, 450);
+	//setarea stilului pentru text (font, directia textului, dimensiunea)
+	settextstyle(3, 0, 2);
+	// Afisarea unui text pe ecran
+	outtextxy(10, 10, "Sample example");
+	// schimbare origine in mijlocul ecranului (fara clipping)
+	setviewport(getmaxx() / 2, getmaxy() / 2, getmaxx(), getmaxy(), 0);
+	setbkcolor(BLUE);
+	cleardevice();
+	putpixel(12, 15, GREEN);
+	rectangle(50, 60, 90, 100);
+	circle(7, 9, 10);
+	lineto(9, 15);
+		// se genereaza coordonatele pentru fiecare cerc 
+
+	getch(); 
+	closegraph(); 
+}
